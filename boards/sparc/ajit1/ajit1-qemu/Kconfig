@@ -5,4 +5,8 @@
 
 if ARCH_BOARD_AJIT1_QEMU
 
+config AJIT1_QEMU_TFLITE
+	bool "128 MiB TFLite image"
+	default n
+
 endif

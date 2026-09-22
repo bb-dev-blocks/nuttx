@@ -8,7 +8,14 @@ include ${TOPDIR}/.config
 include ${TOPDIR}/tools/Config.mk
 include ${TOPDIR}/arch/sparc/src/sparc_v8/Toolchain.defs
 
+ifeq ($(CONFIG_AJIT1_QEMU_TFLITE),y)
+LDSCRIPT = linksparc-128m.ld
+EXTRA_LIBS += $(TOPDIR)/../tflite-micro/gen/ajit_sparc_default_gcc/lib/libtensorflow-microlite.a
+EXTRA_LIBS += $(TOPDIR)/boards/sparc/ajit1/ajit1-qemu/src/resnet_gen/libmodelblob.a
+EXTRA_LIBS += $(TOPDIR)/boards/sparc/ajit1/ajit1-qemu/src/resnet_gen/libromfs.a
+else
 LDSCRIPT = linksparc.ld
+endif
 ARCHSCRIPT += $(BOARD_DIR)$(DELIM)scripts$(DELIM)$(LDSCRIPT)
 
 CFLAGS = $(ARCHCFLAGS) $(ARCHOPTIMIZATION) $(ARCHCPUFLAGS) $(ARCHINCLUDES) $(ARCHDEFINES) $(EXTRAFLAGS)
