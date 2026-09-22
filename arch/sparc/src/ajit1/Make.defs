@@ -1,0 +1,21 @@
+############################################################################
+# arch/sparc/src/ajit1/Make.defs
+#
+# SPDX-License-Identifier: Apache-2.0
+############################################################################
+
+include sparc_v8/Make.defs
+
+HEAD_ASRC = ajit1_head.S
+
+CHIP_ASRCS = ajit1_exceptions.S
+CHIP_CSRCS = ajit1-lowconsole.c ajit1-lowinit.c ajit1-serial.c
+CHIP_CSRCS += ajit1-irq.c ajit1-timerisr.c ajit1-atomic.c
+
+ifeq ($(CONFIG_SMP),y)
+CHIP_CSRCS += ajit1_cpustart.c ajit1_smpcall.c ajit1_cpuidlestack.c
+endif
+
+ifeq ($(CONFIG_ARCH_HAVE_MULTICPU),y)
+CHIP_CSRCS += ajit1_cpuindex.c
+endif

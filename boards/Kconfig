@@ -3787,6 +3787,12 @@ config ARCH_BOARD_S698PM_DKIT
 	---help---
 		none
 
+config ARCH_BOARD_AJIT1_QEMU
+	bool "AJIT1 QEMU"
+	depends on ARCH_CHIP_AJIT1
+	---help---
+		AJIT1 machine ajit1_generic under qemu-ajit
+
 config ARCH_BOARD_HPM6360EVK
 	bool "Hpmicro hpm6360evk"
 	depends on ARCH_CHIP_HPM6360IPA
@@ -4302,6 +4308,7 @@ config ARCH_BOARD
 	default "xx3803"                       if ARCH_BOARD_XX3803
 	default "xx3823"                       if ARCH_BOARD_XX3823
 	default "s698pm-dkit"                  if ARCH_BOARD_S698PM_DKIT
+	default "ajit1-qemu"                   if ARCH_BOARD_AJIT1_QEMU
 	default "hpm6360evk"                   if ARCH_BOARD_HPM6360EVK
 	default "hpm6750evk2"                  if ARCH_BOARD_HPM6750EVK2
 	default "at32f437-mini"                if ARCH_BOARD_AT32F437_MINI
@@ -5498,6 +5505,9 @@ source "boards/sparc/bm3823/xx3823/Kconfig"
 endif
 if ARCH_BOARD_S698PM_DKIT
 source "boards/sparc/s698pm/s698pm-dkit/Kconfig"
+endif
+if ARCH_BOARD_AJIT1_QEMU
+source "boards/sparc/ajit1/ajit1-qemu/Kconfig"
 endif
 if ARCH_BOARD_TLSR8278ADK80D
 source "boards/arm/tlsr82/tlsr8278adk80d/Kconfig"

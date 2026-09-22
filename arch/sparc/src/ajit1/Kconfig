@@ -1,0 +1,13 @@
+#
+# For a description of the syntax of this configuration file,
+# see the file kconfig-language.txt in the NuttX tools repository.
+#
+
+if ARCH_CHIP_AJIT1
+
+config AJIT1_UART
+	bool "UART"
+	default y
+	select UART1_SERIALDRIVER
+
+endif

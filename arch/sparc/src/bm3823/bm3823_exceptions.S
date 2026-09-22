@@ -183,24 +183,6 @@ simple_return:
         ldd     [%o0 + ISF_I4_OFFSET], %i4    ! restore i4, i5
         !ldd     [%o0 + ISF_I6_FP_OFFSET], %i6 ! restore i6/fp, i7
 
-        ldd     [%o0 + PRE_STACK_FRAME_L0_OFFSET], %l4
-        std	    %l4, [%fp + CPU_STACK_FRAME_L0_OFFSET]
-        ldd     [%o0 + PRE_STACK_FRAME_L2_OFFSET], %l4
-        std	    %l4, [%fp + CPU_STACK_FRAME_L2_OFFSET]
-        ldd     [%o0 + PRE_STACK_FRAME_L4_OFFSET], %l4
-        std	    %l4, [%fp + CPU_STACK_FRAME_L4_OFFSET]
-        ldd     [%o0 + PRE_STACK_FRAME_L6_OFFSET], %l4
-        std	    %l4, [%fp + CPU_STACK_FRAME_L6_OFFSET]
-
-        ldd     [%o0 + PRE_STACK_FRAME_I0_OFFSET], %l4
-        std	    %l4, [%fp + CPU_STACK_FRAME_I0_OFFSET]
-        ldd     [%o0 + PRE_STACK_FRAME_I2_OFFSET], %l4
-        std	    %l4, [%fp + CPU_STACK_FRAME_I2_OFFSET]
-        ldd     [%o0 + PRE_STACK_FRAME_I4_OFFSET], %l4
-        std	    %l4, [%fp + CPU_STACK_FRAME_I4_OFFSET]
-        ldd     [%o0 + PRE_STACK_FRAME_I6_FP_OFFSET], %l4
-        std	    %l4, [%fp + CPU_STACK_FRAME_I6_FP_OFFSET]
-
         ldd     [%o0 + ISF_F0_OFFSET]  ,%f0
         ldd     [%o0 + ISF_F2_OFFSET]  ,%f2
         ldd     [%o0 + ISF_F4_OFFSET]  ,%f4

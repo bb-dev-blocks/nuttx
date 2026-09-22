@@ -32,10 +32,12 @@
 #include <assert.h>
 #include <nuttx/debug.h>
 
+#include <nuttx/irq.h>
 #include <nuttx/sched.h>
 
 #include <arch/irq.h>
 
+#include "sched/sched.h"
 #include "sparc_internal.h"
 
 /****************************************************************************
@@ -132,6 +134,7 @@ int sparc_swint1(int irq, void *context, void *arg)
         {
           DEBUGASSERT(regs[REG_I1] != 0);
           up_set_current_regs((uint32_t *)regs[REG_I1]);
+          restore_critical_section(current_task(this_cpu()), this_cpu());
         }
         break;
 
@@ -160,6 +163,7 @@ int sparc_swint1(int irq, void *context, void *arg)
           /* task_flush_trap(regs,(uint32_t *)regs[REG_I2]); */
 
           up_set_current_regs((uint32_t *)regs[REG_I2]);
+          restore_critical_section(current_task(this_cpu()), this_cpu());
         }
         break;
 
